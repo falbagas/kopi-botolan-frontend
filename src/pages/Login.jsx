@@ -31,12 +31,13 @@ const Login = () => {
       <div className="w-full max-w-sm">
         <div className="flex items-center gap-2 justify-center mb-8">
           <div className="w-3 h-3 rounded-full bg-amber-400" />
-          <span className="text-amber-400 text-lg font-medium">KopiBotolan Pro</span>
+          <span className="text-amber-400 text-lg font-medium">Brew & Stirr Personal Dashboard</span>
         </div>
 
         <div className="bg-[#1a1a2e] rounded-2xl p-8 border border-white/5">
           <h1 className="text-white text-xl font-medium mb-1">Selamat datang</h1>
-          <p className="text-gray-500 text-sm mb-6">Masuk ke dashboard laporan penjualan</p>
+          <p className="text-gray-500 text-sm mb-6">Masuk ke dashboard Brew & Stirr</p>
+          <p className="text-amber-500/80 text-xs italic mb-6">*Authorized Personnel Only: Kindly preserve the confidentiality of our signature data</p>
 
           {error && (
             <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3 text-red-400 text-sm mb-4">
