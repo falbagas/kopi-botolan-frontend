@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import Produksi from './pages/Produksi'
 import StokFreezer from './pages/StokFreezer'
 import Koperasi from './pages/Koperasi'
+import KoperasiDetail from './pages/KoperasiDetail'
 import Pengiriman from './pages/Pengiriman'
 import LaporanLaba from './pages/LaporanLaba'
 import HPPHarga from './pages/HPPHarga'
@@ -21,6 +22,7 @@ function App() {
           <Route path="/produksi" element={<ProtectedRoute><Produksi /></ProtectedRoute>} />
           <Route path="/stok-freezer" element={<ProtectedRoute><StokFreezer /></ProtectedRoute>} />
           <Route path="/koperasi" element={<ProtectedRoute><Koperasi /></ProtectedRoute>} />
+          <Route path="/koperasi/:id" element={<ProtectedRoute><KoperasiDetail /></ProtectedRoute>} />
           <Route path="/pengiriman" element={<ProtectedRoute><Pengiriman /></ProtectedRoute>} />
           <Route path="/laporan-laba" element={<ProtectedRoute><LaporanLaba /></ProtectedRoute>} />
           <Route path="/hpp-harga" element={<ProtectedRoute><HPPHarga /></ProtectedRoute>} />
