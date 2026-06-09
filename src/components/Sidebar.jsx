@@ -25,7 +25,7 @@ const Sidebar = () => {
     <aside className="w-52 min-h-screen bg-[#14141f] flex flex-col py-4 px-3 shrink-0">
       <div className="flex items-center gap-2 px-3 mb-6">
         <div className="w-2 h-2 rounded-full bg-amber-400" />
-        <span className="text-amber-400 text-sm font-medium">KopiBotolan Pro</span>
+        <span className="text-amber-400 text-sm font-medium">Dashboard Brew & Stirr</span>
       </div>
 
       <nav className="flex flex-col gap-1 flex-1">
