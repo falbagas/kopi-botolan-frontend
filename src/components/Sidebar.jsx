@@ -10,6 +10,7 @@ const navItems = [
   { label: 'Laporan Laba', path: '/laporan-laba', icon: '▤' },
   { label: 'HPP & Harga', path: '/hpp-harga', icon: '◎' },
   { label: 'Manajemen User', path: '/manajemen-user', icon: '◉', adminOnly: true },
+  { label: 'POS Coffee', path: '/pos', icon: '☕' },
 ]
 
 const Sidebar = () => {

@@ -11,6 +11,7 @@ import Pengiriman from './pages/Pengiriman'
 import LaporanLaba from './pages/LaporanLaba'
 import HPPHarga from './pages/HPPHarga'
 import ManajemenUser from './pages/ManajemenUser'
+import POSCoffee from './pages/POSCoffee'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/laporan-laba" element={<ProtectedRoute><LaporanLaba /></ProtectedRoute>} />
           <Route path="/hpp-harga" element={<ProtectedRoute><HPPHarga /></ProtectedRoute>} />
           <Route path="/manajemen-user" element={<ProtectedRoute><ManajemenUser /></ProtectedRoute>} />
+          <Route path="/pos" element={<ProtectedRoute><POSCoffee /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
