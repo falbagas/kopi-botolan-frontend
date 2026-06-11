@@ -9,7 +9,10 @@ const Koperasi = () => {
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editData, setEditData] = useState(null)
-  const [form, setForm] = useState({ name: '', address: '', contactPerson: '', phone: '', minStockAlert: 20 })
+  const [form, setForm] = useState({
+  name: '', address: '', contactPerson: '', phone: '',
+  minStockAlert: 20, hargaJualBotol: 0, potonganPersen: 10
+})
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
@@ -30,10 +33,18 @@ const Koperasi = () => {
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
   const handleEdit = (kop) => {
-    setEditData(kop)
-    setForm({ name: kop.name, address: kop.address || '', contactPerson: kop.contactPerson || '', phone: kop.phone || '', minStockAlert: kop.minStockAlert })
-    setShowForm(true)
-  }
+  setEditData(kop)
+  setForm({
+    name: kop.name,
+    address: kop.address || '',
+    contactPerson: kop.contactPerson || '',
+    phone: kop.phone || '',
+    minStockAlert: kop.minStockAlert,
+    hargaJualBotol: Number(kop.hargaJualBotol),
+    potonganPersen: Number(kop.potonganPersen),
+  })
+  setShowForm(true)
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -109,6 +120,28 @@ const Koperasi = () => {
                   <div>
                     <label className="text-xs text-gray-500 mb-1 block">No. telepon</label>
                     <input name="phone" value={form.phone} onChange={handleChange} placeholder="cth: 08123456789" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-amber-400" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">Harga jual per botol (Rp)</label>
+                    <input
+                      type="number"
+                      name="hargaJualBotol"
+                      value={form.hargaJualBotol}
+                      onChange={handleChange}
+                      placeholder="cth: 12500"
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-amber-400"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">Potongan koperasi (%)</label>
+                    <input
+                      type="number"
+                      name="potonganPersen"
+                      value={form.potonganPersen}
+                      onChange={handleChange}
+                      placeholder="cth: 10"
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-amber-400"
+                    />
                   </div>
                 </div>
                 <div className="flex gap-3 justify-end">
