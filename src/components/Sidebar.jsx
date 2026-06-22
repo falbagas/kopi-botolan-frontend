@@ -6,7 +6,7 @@ const navItems = [
   { label: 'Produksi', path: '/produksi', icon: '⬡' },
   { label: 'Stok Freezer', path: '/stok-freezer', icon: '❄' },
   { label: 'Koperasi', path: '/koperasi', icon: '⌂' },
-  { label: 'Pengiriman', path: '/pengiriman', icon: '⇄' },
+  { label: 'Pembagian Laba', path: '/pengiriman', icon: '💰' },
   { label: 'Laporan Laba', path: '/laporan-laba', icon: '▤' },
   { label: 'HPP & Harga', path: '/hpp-harga', icon: '◎' },
   { label: 'Manajemen User', path: '/manajemen-user', icon: '◉', adminOnly: true },
