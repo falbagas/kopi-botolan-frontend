@@ -36,7 +36,7 @@ const PembagianLaba = () => {
 
   // Edit pemilik
   const [editPemilik, setEditPemilik] = useState(null)
-  const [formEdit, setFormEdit] = useState({ nama: '', persentase: '' })
+  const [formEdit, setFormEdit] = useState({ nama: '', persentaseKoperasi: '', persentasePos: '' })
 
   const fetchData = async () => {
     try {
@@ -154,7 +154,9 @@ const PembagianLaba = () => {
                         <div className="flex items-start justify-between mb-3">
                           <div>
                             <div className="font-medium text-gray-900">{p.nama}</div>
-                            <div className="text-xs text-amber-600 font-medium mt-0.5">{Number(p.persentase)}% bagian</div>
+                            <div className="text-xs text-amber-600 font-medium mt-0.5">
+                              Koperasi {Number(p.persentaseKoperasi)}% · POS {Number(p.persentasePos)}%
+                            </div>
                           </div>
                           <button onClick={() => { setShowFormMutasi(p); setFormMutasi({ jenis: 'PENARIKAN', jumlah: '', keterangan: '' }) }}
                             className="text-xs px-2 py-1 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50">
@@ -290,7 +292,10 @@ const PembagianLaba = () => {
                         <div key={p.id} className="flex items-center justify-between bg-white rounded-lg px-4 py-2.5">
                           <div>
                             <div className="text-sm font-medium text-gray-900">{p.nama}</div>
-                            <div className="text-xs text-gray-400">{p.persentase}% · saldo saat ini {formatRp(p.saldoSaatIni)}</div>
+                            <div className="text-xs text-gray-400">
+                              Koperasi {p.persentaseKoperasi}% (+{formatRp(p.bagianKoperasi)}) · 
+                              POS {p.persentasePos}% (+{formatRp(p.bagianPos)})
+                            </div>
                           </div>
                           <div className="text-right">
                             <div className="text-sm font-medium text-green-600">+{formatRp(p.bagian)}</div>
@@ -372,12 +377,21 @@ const PembagianLaba = () => {
                     <tr key={p.id} className="border-t border-gray-100">
                       <td className="px-4 py-3">
                         {editPemilik?.id === p.id ? (
-                          <form onSubmit={handleUpdatePemilik} className="flex gap-2 items-center">
+                          <form onSubmit={handleUpdatePemilik} className="flex gap-2 items-center flex-wrap">
                             <input value={formEdit.nama} onChange={e => setFormEdit(f => ({ ...f, nama: e.target.value }))}
-                              className="border border-gray-200 rounded-lg px-2 py-1 text-sm w-36 focus:outline-none focus:border-amber-400" />
-                            <input type="number" value={formEdit.persentase} onChange={e => setFormEdit(f => ({ ...f, persentase: e.target.value }))}
-                              className="border border-gray-200 rounded-lg px-2 py-1 text-sm w-16 focus:outline-none focus:border-amber-400" />
-                            <span className="text-xs text-gray-400">%</span>
+                              placeholder="Nama" className="border border-gray-200 rounded-lg px-2 py-1 text-sm w-32 focus:outline-none focus:border-amber-400" />
+                            <div className="flex items-center gap-1">
+                              <span className="text-xs text-gray-400">Koperasi</span>
+                              <input type="number" value={formEdit.persentaseKoperasi} onChange={e => setFormEdit(f => ({ ...f, persentaseKoperasi: e.target.value }))}
+                                className="border border-gray-200 rounded-lg px-2 py-1 text-sm w-14 focus:outline-none focus:border-amber-400" />
+                              <span className="text-xs text-gray-400">%</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <span className="text-xs text-gray-400">POS</span>
+                              <input type="number" value={formEdit.persentasePos} onChange={e => setFormEdit(f => ({ ...f, persentasePos: e.target.value }))}
+                                className="border border-gray-200 rounded-lg px-2 py-1 text-sm w-14 focus:outline-none focus:border-amber-400" />
+                              <span className="text-xs text-gray-400">%</span>
+                            </div>
                             <button type="submit" className="text-xs px-2 py-1 bg-amber-400 text-gray-900 rounded-lg">Simpan</button>
                             <button type="button" onClick={() => setEditPemilik(null)} className="text-xs px-2 py-1 border border-gray-200 rounded-lg text-gray-500">Batal</button>
                           </form>
@@ -391,7 +405,7 @@ const PembagianLaba = () => {
                       <td className="px-4 py-3 text-right font-medium text-gray-900">{formatRp(p.saldo)}</td>
                       <td className="px-4 py-3 text-right">
                         {editPemilik?.id !== p.id && (
-                          <button onClick={() => { setEditPemilik(p); setFormEdit({ nama: p.nama, persentase: Number(p.persentase) }) }}
+                          <button onClick={() => { setEditPemilik(p); setFormEdit({ nama: p.nama, persentaseKoperasi: Number(p.persentaseKoperasi), persentasePos: Number(p.persentasePos) }) }}
                             className="text-xs px-3 py-1 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50">
                             Edit
                           </button>
